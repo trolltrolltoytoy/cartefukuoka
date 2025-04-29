@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carte sensible de Fukuoka</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fffaf8;
+    }
+    header {
+      background: #f8e9e9;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #444;
+    }
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+    .popup-img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: cover;
+      margin-top: 5px;
+      border-radius: 10px;
+    }
+    .popup-text {
+      margin-top: 8px;
+      font-style: italic;
+    }
+    /* Style du bouton recentrer */
+    #reset-view {
+      position: absolute;
+      top: 90px;
+      right: 20px;
+      z-index: 1000;
+      background: #f8e9e9;
+      border: none;
+      padding: 16px;
+      border-radius: 50%;
+      font-size: 25px;
+      font-weight: bold;
+      color: #555;
+      cursor: pointer;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    cartographie - préfécture de Fukuoka
+  </header>
+
+  <div id="map"></div>
+
+  <!-- Bouton pour recentrer la carte -->
+  <button id="reset-view">🧭</button>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([33.602, 130.4017], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Atelier
+    L.marker([33.672065, 130.443870]).addTo(map)
+      .bindPopup(`
+        <div>
+          <strong>08/04 ワークショップ</strong><br>
+          <p class="popup-text">
+            Depuis la fenêtre je vois les montagnes, elles sont d’autant plus belles lors de jours nuageux, la brume semble s’endormir dans le creux des vallées. 
+            Defne travaille beaucoup depuis que nous sommes arrivés, j'aime bien la voir comme ça.
+          </p>
+          <img src="IMG_6205.jpg" class="popup-img" alt="vue fenêtre atelier">
+        </div>
+      `);
+
+    // Cerisiers
+    L.marker([33.669911, 130.446145]).addTo(map)
+      .bindPopup(`
+        <div>
+          <strong>07/04</strong><br>
+          <p class="popup-text">
+            je suis censé y croire ? c'est la rentrée, les clubs essaient de recruter et les fleurs de cerisiers commencent à tomber
+          </p>
+          <img src="IMG_6182.jpg" class="popup-img" alt="cerisiers Fukuoka">
+        </div>
+      `);
+
+    // Atelier bois
+    L.marker([33.672465, 130.444250]).addTo(map)
+      .bindPopup(`
+        <div>
+          <strong>10/04 木工アトリエ</strong><br>
+          <p class="popup-text">
+            c’est immense, on apprend à sculpter dans du camphrier, je flippe à chaque coup de marteau
+          </p>
+          <img src="IMG_6435.jpg" class="popup-img" alt="atelier bois">
+        </div>
+      `);
+
+    // Akama plus jamais
+    L.marker([33.808353, 130.569512]).addTo(map)
+      .bindPopup(`
+        <div>
+          <strong>Akama plus jamais</strong><br>
+          <p class="popup-text">
+            c'est notre premier jour à l'univeristé, on est monté dans un train express au lieu d'un local et sommes arrivé.es à l'autre bout de la maps. arrivé.e à notre premier cours de cinéma = 30 min de retard...
+          </p>
+          <img src="https://i.postimg.cc/DwpfxMVq/f928ac51-2df7-4413-8c40-818d8a8e4374.jpg" class="popup-img" alt="photo Akama">
+        </div>
+      `);
+
+    // しょだい くにもと の じゅぎょう
+    L.marker([33.67183847740786, 130.444067366866]).addTo(map)
+      .bindPopup(`
+        <div>
+          <strong>21/04</strong><br>
+          <p class="popup-text">
+            しょだい くにもと の じゅぎょう せんせい, (premier cours de professeur Kunimoto), encore une fois tout le monde bosse sur le sol, c'est hyper agréable 
+          </p>
+          <img src="https://i.postimg.cc/MKPbn3s3/4-AB3-A04-B-A987-4-F22-83-BE-F244604-DEAE8.jpg" class="popup-img" alt="しょだい くにもと の じゅぎょう">
+        </div>
+      `);
+
+// Ajouter l'image et les détails à la coordonnée spécifiée
+L.marker([33.760075655486474, 130.36539045862014]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>26/04</strong><br>
+      <p class="popup-text">ねこ の しま (l'île aux chats), ねこ ちゃん ne veut pas être interviewé sans gourmandise à la clef</p>
+      <img src="https://i.postimg.cc/P5CcJwMZ/E92-EAEE2-EF01-4509-9-F9-E-B5-C413532-CB8.jpg" class="popup-img" alt="île aux chats">
+    </div>
+  `);
+
+// Ajouter l'image et les détails à la coordonnée spécifiée
+L.marker([33.67224017050592, 130.44348199366047]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>23/04</strong><br>
+      <p class="popup-text">J'apprends à tourner depuis maintenant deux semaines, c'est génial, on a la chance énorme d'être très bien accompagné.es. Souvent ce cours est très silencieux. J'observe Defne, elle apprécie le tournage, ça se voit, différemment de la peinture</p>
+      <img src="https://i.postimg.cc/XJY9Nwf6/F4-A69270-85-A7-4986-95-E3-B1-EB0-C67-FA1-B.jpg" class="popup-img" alt="atelier tournage">
+    </div>
+  `);
+
+// Ajouter un point avec image à une nouvelle coordonnée
+L.marker([33.67214767157967, 130.44360661276383]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>20/04</strong><br>
+      <p class="popup-text"> Ils ont beaucoup de livres remplis de travaux d'étudiant.es, des diplomé.es ? </p>
+      <img src="https://i.postimg.cc/VNfF5Sn1/IMG-6604.jpg" class="popup-img" alt="image sans titre">
+    </div>
+  `);
+
+// Atelier bois - 17/04
+L.marker([33.67240274413517, 130.44435769546777]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>17/04</strong><br>
+      <p class="popup-text">encore l'atelier bois parce que j'en suis fan fan fan</p>
+      <img src="https://i.postimg.cc/5trF1jms/IMG-6807.jpg" class="popup-img" alt="atelier bois 17/04">
+    </div>
+  `);
+
+// Point du 28/04
+L.marker([33.66757778870828, 130.4430764543885]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>28/04</strong><br>
+      <p class="popup-text">___________________________</p>
+      <img src="https://i.postimg.cc/43Hx6Pz1/IMG-6837.jpg" class="popup-img" alt="photo 28 avril">
+    </div>
+  `);
+
+// Puces de Fukuoka - 20/04
+L.marker([33.615504410715744, 130.42093995361668]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>20/04</strong><br>
+      <p class="popup-text">On a trouvé les puces de Fukuoka!</p>
+      <img src="https://i.postimg.cc/Gpv135F6/IMG-6804.jpg" class="popup-img" alt="puces de Fukuoka">
+    </div>
+  `);
+
+// Point du 25/04
+L.marker([33.66345936477912, 130.44463002952585]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>25/04</strong><br>
+      <p class="popup-text">__________________________ </p>
+      <img src="https://i.postimg.cc/2ysw52FX/IMG-6680.jpg" class="popup-img" alt="photo 25 avril">
+    </div>
+  `);
+
+// Point du 19/04 - musée d'Art de Fukuoka
+L.marker([33.58411830142849, 130.37970581780695]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>19/04 — musée d'Art de Fukuoka</strong><br>
+      <p class="popup-text">
+        traduction approximative du cartel récupéré sur place : <br>
+        <em>"SECOND PLANET, "A Place Without a Catastrophe" - 2024</em>, collectif d'artiste Hisao Tonoda et Keiichi Miyagawa. Portrait de Kokura le 9 août 1945 abordant l'évènement historique "qui n'a pas eu lieu".<br><br>
+        Les diapositives montrent la chronologie des B29 qui sont partis de l'île de Tinian vers Kokura transportant la bombe atomique. L'installation sonore utilise les sons ambiants du lieu d'exposition ainsi que des sons collectés en ligne et hors ligne. <br><br>
+        L'œuvre tente de traiter d'un événement dans un lieu où il ne s'est pas produit, sans la réalité de l'événement ni un "récit central".
+      </p>
+      <img src="https://i.postimg.cc/zBL2XbYv/IMG-6499.jpg" class="popup-img" alt="Musée d'Art Fukuoka">
+    </div>
+  `);
+
+// Point du 19/04
+L.marker([33.5945193202228, 130.40749353989557]).addTo(map)
+  .bindPopup(`
+    <div>
+      <strong>19/04</strong><br>
+      <p class="popup-text">
+        ____________________________________
+      </p>
+      <img src="https://i.postimg.cc/zXMBV4hf/IMG-6491.jpg" class="popup-img" alt="photo 19 avril">
+    </div>
+  `);
+
+    // Action du bouton reset
+    document.getElementById('reset-view').addEventListener('click', function() {
+      map.flyTo([33.602, 130.4017], 12, {
+        animate: true,
+        duration: 1.5 // Durée de l'animation en secondes
+      });
+    });
+
+  </script>
+
+</body>
+</html>
